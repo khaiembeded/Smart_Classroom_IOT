@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Classroom Monitor</title>
+    <link rel="stylesheet" href="giaodien.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><b>Smart Classroom</b></div>
+            <div id="time" class="clock">00:00:00</div>
+        </header>
+
+        <div class="room-selector">
+            <div class="select-group">
+                <label for="select-floor">Chọn Tầng:</label>
+                <select id="select-floor">
+                    <option value="tang_1">Tầng 1</option>
+                    <option value="tang_2">Tầng 2</option>
+                </select>
+            </div>
+
+            <div class="select-group">
+                <label for="select-room">Chọn Lớp:</label>
+                <select id="select-room">
+                    <option value="lop_1">Lớp 1</option>
+                    <option value="lop_2">Lớp 2</option>
+                    <option value="lop_3">Lớp 3</option>
+                </select>
+            </div>
+        </div>
+
+        <main>
+            <!-- HÀNG 1: 3 Ô CẢM BIẾN + THANH TRƯỢT -->
+            <section class="top-grid">
+                <div class="card sensor-card">
+                    <img src="image/nhietdo.png" class="custom-icon sensor-icon" id="img-temp" alt="Nhiệt độ">
+                    <h3>Nhiệt độ</h3>
+                    <p id="temp-val">-- °C</p>
+                    <small id="threshold-temp-text">Ngưỡng: -- °C</small>
+                </div>
+
+                <div class="card sensor-card">
+                    <img src="image/doam.png" class="custom-icon sensor-icon" id="img-hum" alt="Độ ẩm">
+                    <h3>Độ ẩm</h3>
+                    <p id="hum-val">-- %</p>
+                    <small id="threshold-hum-text">Ngưỡng: -- %</small>
+                </div>
+
+                <div class="card sensor-card">
+                    <img src="image/buimin.png" class="custom-icon sensor-icon" id="img-dust" alt="Bụi mịn">
+                    <h3>Bụi mịn PM2.5</h3>
+                    <p id="dust-val">-- µg/m³</p>
+                    <small id="threshold-dust-text">Ngưỡng: -- µg/m³</small>
+                </div>
+
+                <div class="card slider-card">
+                    <h3 class="slider-title">Thanh trượt cảm biến</h3>
+
+                    <div class="slider-row">
+                        <div class="slider-label">
+                            <b>Nhiệt độ</b>
+                            <span id="slider-temp-value">-- °C</span>
+                        </div>
+                        <input type="range" id="slider-temp" min="0" max="60" step="0.1" value="25">
+                    </div>
+
+                    <div class="slider-row">
+                        <div class="slider-label">
+                            <b>Độ ẩm</b>
+                            <span id="slider-hum-value">-- %</span>
+                        </div>
+                        <input type="range" id="slider-hum" min="0" max="100" step="1" value="60">
+                    </div>
+
+                    <div class="slider-row">
+                        <div class="slider-label">
+                            <b>Độ bụi</b>
+                            <span id="slider-dust-value">-- µg/m³</span>
+                        </div>
+                        <input type="range" id="slider-dust" min="0" max="300" step="1" value="60">
+                    </div>
+                </div>
+            </section>
+
+            <!-- HÀNG 2: BIỂU ĐỒ + TERMINAL -->
+            <section class="chart-terminal-row">
+                <div class="card chart-card">
+                    <h3 class="chart-title">Biểu đồ cột giá trị cảm biến hiện tại</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card terminal-card">
+                    <h3 class="terminal-title">Terminal giám sát lớp học</h3>
+                    <div id="terminal-log" class="terminal-log">
+                        <div class="terminal-line info">[Hệ thống] Dashboard Smart Classroom đã khởi động.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ĐIỀU KHIỂN TỔNG -->
+            <section class="master-controls">
+                <div class="card control-card">
+                    <div class="control-info">
+                        <img src="image/power_off.png" class="custom-icon device-icon" id="img-power" alt="Nguồn">
+                        <h3>Nguồn Tổng</h3>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="btn-power">
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+
+                <div class="card control-card">
+                    <div class="control-info">
+                        <img src="image/mode_manual.png" class="custom-icon device-icon" id="img-mode" alt="Chế độ">
+                        <h3>Chế độ</h3>
+                        <small id="mode-status">Đang chọn: Thủ công</small>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="btn-mode" disabled>
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- THIẾT BỊ -->
+            <section class="devices-grid">
+                <div class="card control-card">
+                    <div class="control-info">
+                        <img src="image/ac_off.png" class="custom-icon device-icon" id="img-ac" alt="Máy lạnh">
+                        <h3>Máy Lạnh</h3>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="btn-ac" disabled>
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+
+                <div class="card control-card">
+                    <div class="control-info">
+                        <img src="image/purifier_off.png" class="custom-icon device-icon" id="img-purifier" alt="Máy lọc bụi">
+                        <h3>Máy Lọc Bụi</h3>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="btn-purifier" disabled>
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+
+                <div class="card control-card">
+                    <div class="control-info">
+                        <img src="image/quat_off.png" class="custom-icon device-icon" id="img-fan" alt="Quạt">
+                        <h3>Quạt Máy</h3>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="btn-fan" disabled>
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+
+                <div class="card control-card">
+                    <div class="control-info">
+                        <img src="image/tatden.png" class="custom-icon device-icon" id="img-light" alt="Đèn">
+                        <h3>Đèn Phòng</h3>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="btn-light" disabled>
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyD6X_Vl0cE1PnsbO1A6bvo1N5hUplqtJbo",
+            authDomain: "iot9thang6.firebaseapp.com",
+            databaseURL: "https://iot9thang6-default-rtdb.firebaseio.com",
+            projectId: "iot9thang6",
+            storageBucket: "iot9thang6.firebasestorage.app",
+            messagingSenderId: "789476482226",
+            appId: "1:789476482226:web:8f5e7f93cf3fde13e37dab",
+            measurementId: "G-YTZMTZTGBG"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="chucnang.js"></script>
+</body>
+</html>
