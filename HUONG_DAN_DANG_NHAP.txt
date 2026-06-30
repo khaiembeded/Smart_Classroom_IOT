@@ -1,0 +1,10 @@
+HUONG DAN TINH NANG DANG NHAP SMART CLASSROOM
+
+TAI KHOAN DEMO
+- tang1lop1 / 1111 -> Tang 1 - Lop 1
+- tang1lop2 / 2222 -> Tang 1 - Lop 2
+- tang1lop3 / 3333 -> Tang 1 - Lop 3
+- tang2lop1 / 4444 -> Tang 2 - Lop 1
+- tang2lop2 / 5555 -> Tang 2 - Lop 2
+- tang2lop3 / 6666 -> Tang 2 - Lop 3
+

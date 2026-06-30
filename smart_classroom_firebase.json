@@ -1,0 +1,128 @@
+{
+    "building": {
+        "tang_1": {
+            "lop_1": {
+                "controls": {
+                    "power_main": 1,
+                    "mode_auto": 0,
+                    "ac": 0,
+                    "fan": 1,
+                    "light": 0,
+                    "purifier": 0
+                },
+                "sensors": {
+                    "nhiet_do": 25.5,
+                    "do_am": 65,
+                    "bui_min": 45
+                },
+                "thresholds": {
+                    "nhiet_max": 28,
+                    "do_am_max": 80,
+                    "bui_max": 50
+                }
+            },
+            "lop_2": {
+                "controls": {
+                    "power_main": 1,
+                    "mode_auto": 1,
+                    "ac": 0,
+                    "fan": 1,
+                    "light": 0,
+                    "purifier": 0
+                },
+                "sensors": {
+                    "nhiet_do": 26.0,
+                    "do_am": 70,
+                    "bui_min": 40
+                },
+                "thresholds": {
+                    "nhiet_max": 28,
+                    "do_am_max": 80,
+                    "bui_max": 50
+                }
+            },
+            "lop_3": {
+                "controls": {
+                    "power_main": 1,
+                    "mode_auto": 0,
+                    "ac": 1,
+                    "fan": 0,
+                    "light": 0,
+                    "purifier": 1
+                },
+                "sensors": {
+                    "nhiet_do": 30.5,
+                    "do_am": 82,
+                    "bui_min": 65
+                },
+                "thresholds": {
+                    "nhiet_max": 28,
+                    "do_am_max": 80,
+                    "bui_max": 50
+                }
+            }
+        },
+        "tang_2": {
+            "lop_1": {
+                "controls": {
+                    "power_main": 1,
+                    "mode_auto": 1,
+                    "ac": 0,
+                    "fan": 1,
+                    "light": 0,
+                    "purifier": 0
+                },
+                "sensors": {
+                    "nhiet_do": 24.0,
+                    "do_am": 60,
+                    "bui_min": 35
+                },
+                "thresholds": {
+                    "nhiet_max": 28,
+                    "do_am_max": 80,
+                    "bui_max": 50
+                }
+            },
+            "lop_2": {
+                "controls": {
+                    "power_main": 0,
+                    "mode_auto": 0,
+                    "ac": 0,
+                    "fan": 0,
+                    "light": 0,
+                    "purifier": 0
+                },
+                "sensors": {
+                    "nhiet_do": 23.5,
+                    "do_am": 58,
+                    "bui_min": 30
+                },
+                "thresholds": {
+                    "nhiet_max": 28,
+                    "do_am_max": 80,
+                    "bui_max": 50
+                }
+            },
+            "lop_3": {
+                "controls": {
+                    "power_main": 1,
+                    "mode_auto": 1,
+                    "ac": 1,
+                    "fan": 0,
+                    "light": 1,
+                    "purifier": 0
+                },
+                "sensors": {
+                    "nhiet_do": 29.0,
+                    "do_am": 75,
+                    "bui_min": 42
+                },
+                "thresholds": {
+                    "nhiet_max": 28,
+                    "do_am_max": 80,
+                    "bui_max": 50
+                }
+            }
+        }
+    }
+}

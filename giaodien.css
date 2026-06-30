@@ -1,0 +1,717 @@
+:root {
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --primary: #4e73df;
+    --success: #1cc88a;
+    --text-main: #4b4f5c;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("image/lophoc.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text-main);
+}
+
+/* =========================
+   MÀN HÌNH ĐĂNG NHẬP
+========================= */
+.app-hidden {
+    display: none !important;
+}
+
+.login-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(13, 23, 42, 0.25);
+    backdrop-filter: blur(2px);
+}
+
+.login-screen.hidden {
+    display: none !important;
+}
+
+.login-card {
+    width: min(430px, 94vw);
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 20px;
+    padding: 26px;
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.18);
+}
+
+.login-logo {
+    text-align: center;
+    color: var(--primary);
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.login-card h2 {
+    margin: 0;
+    text-align: center;
+    color: #111827;
+    font-size: 22px;
+}
+
+.login-desc {
+    margin: 10px 0 18px 0;
+    text-align: center;
+    color: #5b6472;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.login-form label {
+    font-weight: 800;
+    color: #374151;
+    font-size: 14px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 12px 13px;
+    border: 2px solid #e3e6f0;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+    font-family: inherit;
+    background: white;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: var(--primary);
+}
+
+.remember-row {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.remember-row label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.login-btn {
+    margin-top: 8px;
+    width: 100%;
+    border: none;
+    background: var(--primary);
+    color: white;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.login-btn:hover {
+    filter: brightness(0.95);
+}
+
+.login-message {
+    min-height: 20px;
+    margin-top: 4px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.login-message.error {
+    color: #dc2626;
+}
+
+.login-message.success {
+    color: #15803d;
+}
+
+.demo-account-box {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #f3f6ff;
+    color: #374151;
+    font-size: 13px;
+    line-height: 1.55;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px 10px;
+}
+
+.demo-account-box b {
+    grid-column: 1 / -1;
+    color: var(--primary);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.login-room-label {
+    background: rgba(255, 255, 255, 0.18);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.logout-btn {
+    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary);
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-weight: 900;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.logout-btn:hover {
+    filter: brightness(0.96);
+}
+
+.locked-room-note {
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.select-group select:disabled {
+    background: #f3f4f6;
+    color: #6b7280;
+    cursor: not-allowed;
+}
+
+.container {
+    width: min(1380px, 95vw);
+    margin: 0 auto;
+    padding: 10px 14px;
+}
+
+header {
+    height: 58px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary);
+    color: white;
+    padding: 0 24px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.clock {
+    font-size: 20px;
+    font-family: Consolas, monospace;
+    font-weight: 800;
+}
+
+.room-selector {
+    min-height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 12px;
+    background: var(--card-bg);
+    padding: 10px 14px;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.select-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.select-group label {
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 15px;
+}
+
+.select-group select {
+    padding: 7px 13px;
+    font-size: 15px;
+    border: 2px solid #e3e6f0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    background: white;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: var(--text-main);
+}
+
+p {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+/* HÀNG TRÊN */
+.top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.2fr;
+    gap: 16px;
+    margin-bottom: 14px;
+    align-items: stretch;
+}
+
+.sensor-card {
+    min-height: 158px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sensor-icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin: 0 auto 8px auto;
+}
+
+.sensor-card h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+.sensor-card p {
+    font-size: 21px;
+    line-height: 1.15;
+}
+
+.sensor-card small {
+    display: block;
+    margin-top: 7px;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.slider-card {
+    text-align: left;
+    min-height: 158px;
+}
+
+.slider-title {
+    text-align: left;
+    font-size: 19px;
+    margin-bottom: 12px;
+    color: #111;
+}
+
+.slider-row {
+    margin-bottom: 14px;
+}
+
+.slider-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.slider-label b {
+    color: #111;
+}
+
+.slider-label span {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.slider-row input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+/* HÀNG BIỂU ĐỒ + TERMINAL */
+.chart-terminal-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.chart-card {
+    text-align: left;
+}
+
+.chart-title {
+    text-align: center;
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 290px;
+}
+
+.chart-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.terminal-card {
+    text-align: left;
+}
+
+.terminal-title {
+    text-align: center;
+    color: #111;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.terminal-log {
+    height: 290px;
+    overflow-y: auto;
+    background: #10151c;
+    color: #d9e2ef;
+    border-radius: 10px;
+    padding: 12px;
+    font-family: Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.terminal-line {
+    margin-bottom: 6px;
+    word-wrap: break-word;
+}
+
+.terminal-line.info {
+    color: #8bd3ff;
+}
+
+.terminal-line.warn {
+    color: #ffd166;
+}
+
+.terminal-line.alert {
+    color: #ff7b7b;
+}
+
+.terminal-line.ok {
+    color: #7ef29a;
+}
+
+/* CONTROL */
+.master-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.devices-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.control-card {
+    min-height: 98px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.control-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.device-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.control-info h3 {
+    margin: 0;
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+.control-info small {
+    margin-top: 4px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* CÔNG TẮC BẬT/TẮT */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 58px;
+    height: 32px;
+    flex-shrink: 0;
+    margin-left: auto;
+    z-index: 2;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-slider,
+.slider-switch {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #9ca3af;
+    transition: 0.3s;
+    border-radius: 34px;
+    border: 1px solid #777;
+    opacity: 1;
+}
+
+.switch-slider:before,
+.slider-switch:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 4px;
+    bottom: 3px;
+    background-color: #ffffff;
+    transition: 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.switch input:checked + .switch-slider,
+.switch input:checked + .slider-switch {
+    background-color: var(--success);
+    border-color: #149b6b;
+}
+
+.switch input:checked + .switch-slider:before,
+.switch input:checked + .slider-switch:before {
+    transform: translateX(26px);
+}
+
+.switch input:disabled + .switch-slider,
+.switch input:disabled + .slider-switch {
+    background-color: #c7cbd1;
+    border-color: #a9aeb7;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.switch input:checked:disabled + .switch-slider,
+.switch input:checked:disabled + .slider-switch {
+    background-color: #72dbb2;
+    border-color: #52b993;
+    opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+    .top-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .chart-terminal-row {
+        grid-template-columns: 1fr;
+    }
+
+    .devices-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 8px;
+    }
+
+    header {
+        height: auto;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .room-selector {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .top-grid,
+    .chart-terminal-row,
+    .master-controls,
+    .devices-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .sensor-card {
+        min-height: 120px;
+    }
+
+    .sensor-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .sensor-card p {
+        font-size: 19px;
+    }
+
+    .slider-card {
+        min-height: auto;
+    }
+
+    .chart-wrapper,
+    .terminal-log {
+        height: 250px;
+    }
+
+    .control-card {
+        min-height: 78px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+    }
+
+    .control-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .control-info h3 {
+        font-size: 14px;
+        white-space: normal;
+    }
+
+    .device-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .switch {
+        width: 56px;
+        height: 31px;
+        display: inline-block;
+        flex-shrink: 0;
+        margin-left: 10px;
+    }
+
+    .switch-slider:before,
+    .slider-switch:before {
+        width: 23px;
+        height: 23px;
+        bottom: 3px;
+        left: 4px;
+    }
+
+    .switch input:checked + .switch-slider:before,
+    .switch input:checked + .slider-switch:before {
+        transform: translateX(25px);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .login-card {
+        padding: 20px;
+    }
+
+    .demo-account-box {
+        grid-template-columns: 1fr;
+    }
+
+    .header-right {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .login-room-label,
+    .logout-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .locked-room-note {
+        text-align: center;
+    }
+}
